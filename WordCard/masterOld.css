@@ -1,0 +1,56 @@
+#cardOld {
+  margin-top: 5px;
+  background: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-family: verdana;
+  color: #444;
+  overflow: hidden;
+  transition: all .3s;
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)
+}
+#textOld {
+  height: 62px;
+}
+#wordOld p {
+  margin: 0;
+  padding: 0;
+  color: #444;
+  font-size: 22px;
+  font-family: inherit;
+  padding: 5px 0 0 5px;
+  display: inline-block;
+}
+#translationOld {
+  color: #555;
+  height: 23px;
+  transition: all .3s;
+  padding-left: 5px;
+  font-size: 20px;
+  font-family: inherit;
+  overflow: hidden;
+
+}
+#controlOld {
+  border-top: 1px solid #ccc;
+  overflow: hidden;
+  background: #f8f8f8;
+  padding: 5px;
+}
+#btnShowOld {
+  width: 100%;
+  margin-bottom: 10px;
+  transition: all .3s;
+  overflow: hidden;
+  display: block;
+  background: #1867c0;
+}
+
+#btnTrueOld{
+  background: #4caf50;
+  float: right;
+}
+#btnFalseOld{
+  background: #ff5252;
+  float: left;
+}

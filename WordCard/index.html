@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#1867c0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="master.css"/>
+    <link rel="stylesheet" href="masterOld.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+    <title>WordCard</title>
+    <script src="../_DATA/QRcode generator/qrcode.js"></script>
+    <script src="../_DATA/QRcode generator/app.js"></script>
+    <script src="../_DATA/app.js"></script>
+  </head>
+  <body>
+    <div id="main">
+      <div id="settings">
+        <div id="settingsField">
+          <button id="btnShowSettings"  class="button">Выбрать словарь</button>
+            <div id="dictionary1" class="dictionaries">
+              <img src="img/dictionary.png" alt="img">
+              <div class="infoDectionary">
+                <div class="label">Урок #1</div>
+                <div class="description">Слов: 20; Транскрипция: 0%</div>
+              </div>
+              <div class="chekMark"></div>
+            </div>
+            <div id="dictionary2" class="dictionaries">
+              <img src="img/dictionary.png" alt="img">
+              <div class="infoDectionary">
+                <div class="label">250 популярных слов</div>
+                <div class="description">Слов: 250; Транскрипция: 0%</div>
+              </div>
+              <div class="chekMark"></div>
+            </div>
+            <div id="dictionary3" class="dictionaries">
+              <img src="img/dictionary.png" alt="img">
+              <div class="infoDectionary">
+                <div class="label">Наречия</div>
+                <div class="description">Слов: 50; Транскрипция: 0%</div>
+              </div>
+              <div class="chekMark"></div>
+            </div>
+          <button id="btnConfirm"  class="button">Готово</button>
+        </div>
+      </div>
+      <div id="stat"></div>
+      <div id="container">
+        <div id="card">
+          <div id="text">
+            <div id="word"><p></p><small></small></div>
+            <div id="translation"></div>
+          </div>
+          <div id="control">
+            <button id="btnShow"  class="button">Показать перевод</button>
+            <button id="btnFalse" class="w100 button">Неверно</button>
+            <button id="btnTrue"  class="w100 button">Верно</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="dictionary.js"></script>
+    <!-- <script src="mostPopularWords.js"></script> -->
+    <script src="app.js"></script>
+  </body>
+</html>

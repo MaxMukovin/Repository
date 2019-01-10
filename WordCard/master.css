@@ -1,0 +1,209 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+#main {
+  width: 400px;
+  margin: auto;
+}
+/*==================================================================  */
+#settings {
+  margin-top: 50px;
+}
+#settingsField {
+  margin: auto;
+  overflow: hidden;
+  transition: all .3s;
+  width: 100%;
+  height: 30px;
+  border-radius: 2px;
+  background: #f5f5f5;
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)
+}
+#btnShowSettings {
+  margin: auto;
+  width: 100%;
+  display: block;
+  color: #777;
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+  height: 30px;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12)
+}
+#btnConfirm {
+  display: block;
+  width: 100%;
+  height: 30px;
+  color: #eee;
+  background: #4caf50;
+}
+.dictionaries {
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 5px 0 5px;
+  height: 35px;
+  transition: all .3s;
+  border-bottom: 1px solid #ddd;
+  font-family: verdana;
+}
+.dictionaries:hover {background: rgba(255, 255, 255, .8)}
+
+.dictionaries img {
+  transition: all .3s;
+  height: 30px;
+  float: left;
+  line-height: 30px;
+  margin: 4px 5px 4px 5px;
+  opacity: .6;
+}
+.infoDectionary {
+  overflow: hidden;
+  width: 240px;
+  float: left;
+}
+.label {
+  width: 100%;
+  transition: all .3s;
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 3px;
+  float: left;
+}
+.description {
+  width: 100%;
+  transition: all .3s;
+  font-size: 12px;
+  float: left;
+  color: #666;
+}
+.chekMark {
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  float: right;
+  margin: 8px 10px;
+}
+.chekMark::before {
+  transition: all .3s;
+  content: "";
+  background: url(https://img.icons8.com/color/96/000000/checkmark.png) center center no-repeat ;
+  background-size: cover;
+  margin: -3px 0 0 -1px;
+  width: 22px;
+  height: 22px;
+  display: block;
+  transform: scale(0);
+
+}
+/* Заперщает выделение текста */
+.dictionaries, #stat {
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
+}
+/*==================================================================  */
+/* Активное состояния словарей */
+.active .chekMark::before {
+  transform: scale(1);
+}
+
+/*==================================================================  */
+#stat {
+  margin: auto;
+  margin-top: 10px;
+  font-family: verdana;
+  color: #666;
+  height: 80px;
+  background: #eee;
+  padding: 5px;
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)
+}
+#container {
+  margin: 10px;
+}
+#card {
+  margin-top: 5px;
+  background: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-family: verdana;
+  color: #444;
+  overflow: hidden;
+  transition: all .3s;
+  height: 0;
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)
+}
+#text {
+  height: 62px;
+}
+#word p {
+  margin: 0;
+  padding: 0;
+  color: #444;
+  font-size: 22px;
+  font-family: inherit;
+  padding: 5px 0 0 5px;
+  display: inline-block;
+}
+#word small {
+  display: inline-block;
+  font-size: 20px;
+  font-family: inherit;
+  margin-left: 5px;
+  color: #999;
+}
+#translation {
+  color: #555;
+  height: 23px;
+  transition: all .3s;
+  padding-left: 5px;
+  font-size: 20px;
+  font-family: inherit;
+  overflow: hidden;
+}
+#control {
+  border-top: 1px solid #ccc;
+  overflow: hidden;
+  background: #f8f8f8;
+  padding: 5px;
+}
+#btnShow {
+  color: #eee;
+  width: 100%;
+  margin-bottom: 10px;
+  transition: all .3s;
+  overflow: hidden;
+  display: block;
+  background: #1867c0;
+}
+#btnTrue{
+  color: #eee;
+  background: #4caf50;
+  float: right;
+}
+#btnFalse{
+  color: #eee;
+  background: #ff5252;
+  float: left;
+}
+#btnShow:hover {background: #3C85D6}
+#btnTrue:hover {background: #66BE6A}
+#btnFalse:hover {background: #FF7272}
+
+.button {
+  transition: all .3s;
+  cursor: pointer;
+  border-radius: 2px;
+  border: none;
+  font-size: 14px;
+}
+.w100 {
+  width: 49.5%;
+  display: block;
+}
+
+@media screen and (orientation: portrait){
+  #main {width: 100%;}
+}
