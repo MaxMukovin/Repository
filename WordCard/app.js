@@ -2,6 +2,13 @@
 // window.onbeforeunload = function() {
 //   return "";
 // }
+// Запрет спящего режима
+var noSleep =  new  NoSleep ();
+document.addEventListener('click', function enableNoSleep() {
+  document.removeEventListener('click', enableNoSleep, false);
+  noSleep.enable();
+}, false);
+//
 
 var counterTrue = 0,
     counterFalse = 0,
@@ -16,15 +23,15 @@ var counterTrue = 0,
 while (container.children.length > 0) {
   container.removeChild(container.firstChild)
 }
-
+//
 // Создаём массив со структурой
 for (var i = 0; i < dictionary.length; i++) {
   structureArray.push(0)
 }
 structureArray[0] = 1;
-
+//
+// Создаём словарь на основании массива структуры
 addDictionary();
-
 
 function addDictionary() {
   appDictionary = [];
@@ -35,9 +42,7 @@ function addDictionary() {
     }
   }
 }
-
-
-
+// 
 // Запускаем функцию генерации карточки
 init();
 
