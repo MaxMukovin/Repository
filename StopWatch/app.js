@@ -17,7 +17,7 @@ var minute = 0,
     round = 0,
     _distance = 0;
 
-function timerFn(){
+function stopWatch(){
   second++
   if (second == 60) {
     second = 0;
@@ -25,17 +25,16 @@ function timerFn(){
   }
 
   time = `${minute}:${second}`
-  // console.log(time);
-  timerKpi.innerHTML = time;
+  watch.innerHTML = time;
 
   if (status == 1) {
-    timerId = setTimeout(timerFn, 1000)
+    timerId = setTimeout(stopWatch, 1000)
   }
 }
 
 // === События ===
 btnStart.addEventListener('click', function(){
-  status = 1; clearTimeout(timerId); timerFn();
+  status = 1; clearTimeout(timerId); stopWatch();
   enableNoSleep()
 });
 
@@ -53,8 +52,10 @@ btnRound.addEventListener('click', function(){
 
   totalDistance.innerHTML = _distance;
 
-  var row = document.createElement('div');
-  row.appendChild(document.createTextNode(`Круг:${round}, Время:${time}`));
-  document.body.appendChild(row);
+  var roundInfo = document.createElement('div');
+  roundInfo.className = "roundInfo";
+  roundInfo.appendChild(document.createTextNode(`Круг:${round}, Время:${time}`));
+  roundsInfo.appendChild(roundInfo);
 });
+
 // === ===

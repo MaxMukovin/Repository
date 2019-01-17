@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="master.css"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-control" content="no-cache">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
     <title>StopWatch</title>
     <script src="../_DATA/QRcode generator/qrcode.js"></script>
@@ -12,17 +13,30 @@
     <script src="../_DATA/app.js"></script>
   </head>
   <body>
-    <div id="info">
-      <input id="distance" type="text" value="25">
-      <div id="rounds">0</div>
-      <div id="totalDistance">0</div>
-      <div id="timerKpi">0:0</div>
+    <div class="main">
+      <div class="controls">
+        <div class="distanceSettings">
+          <p>Длина круга</p>
+          <input id="distance" type="text" value="50">
+          <span>Метров</span>
+        </div>
+        <button id="btnStart" class="button">Start</button>
+        <button id="btnStop" class="button">Stop</button>
+      </div>
+      <div class="info">
+        <div class="block">
+          <div id="rounds">0</div>
+          <span>Кругов</span>
+        </div>
+        <div class="block">
+          <div id="totalDistance">0</div>
+          <span>Дистанция</span>
+        </div>
+        <div id="watch">0:0</div>
+        <button id="btnRound" class="button">Круг</button>
+      </div>
+      <div id="roundsInfo"></div>
     </div>
-
-    <button id="btnStart">Start</button>
-    <button id="btnStop">Stop</button>
-    <button id="btnRound">Круг</button>
-
     <script src="app.js"></script>
   </body>
 </html>
