@@ -7,7 +7,12 @@ function enableNoSleep() {
 	setTimeout(function(){noSleep.disable();}, 100);
   timerNS = setTimeout(enableNoSleep, 30000);
 };
-//
+//=========
+// Запрет перезагрузки
+// window.onbeforeunload = function() {
+//   return "";
+// }
+
 
 var minute = 0,
     second = 0,
@@ -15,6 +20,7 @@ var minute = 0,
     timerId,
     status = 0,
     round = 0,
+    lastRound = 0,
     _distance = 0;
 
 function stopWatch(){
@@ -23,9 +29,18 @@ function stopWatch(){
     second = 0;
     minute++
   }
-
-  time = `${minute}:${second}`
-  watch.innerHTML = time;
+  if (minute < 10) {
+    vminute = `0${minute}`
+  } else {
+    vminute = `${minute}`
+  }
+  if (second < 10) {
+    vsecond = `0${second}`
+  } else {
+    vsecond = `${second}`
+  }
+  time = `${vminute}:${vsecond}`
+  watch.children[0].innerHTML = time;
 
   if (status == 1) {
     timerId = setTimeout(stopWatch, 1000)
@@ -34,28 +49,38 @@ function stopWatch(){
 
 // === События ===
 btnStart.addEventListener('click', function(){
-  status = 1; clearTimeout(timerId); stopWatch();
-  enableNoSleep()
+  status = 1;
+  clearTimeout(timerId);
+  stopWatch();
+  enableNoSleep();
+  btnStart.className = "button disable";
+  btnStop.className = "button enable";
+  btnRound.className = "btnRound button";
 });
 
 btnStop.addEventListener('click', function(){
-  status = 0; clearTimeout(timerId);
+  status = 0;
+  clearTimeout(timerId);
   noSleep.disable();
   clearTimeout(timerNS);
+  btnStart.className = "button enable";
+  btnStop.className = "button disable";
+  btnRound.className = "btnRound button inactive";
 });
 
 btnRound.addEventListener('click', function(){
-  round++;
-  rounds.innerHTML = round;
-  _distance = _distance + parseInt(distance.value)
-  console.log(distance.value);
+  if (status == 1) {
+    round++;
+    rounds.innerHTML = round;
+    _distance = _distance + parseInt(distance.value)
 
-  totalDistance.innerHTML = _distance;
+    totalDistance.innerHTML = _distance;
 
-  var roundInfo = document.createElement('div');
-  roundInfo.className = "roundInfo";
-  roundInfo.appendChild(document.createTextNode(`Круг:${round}, Время:${time}`));
-  roundsInfo.appendChild(roundInfo);
+    var roundInfo = document.createElement('div');
+    roundInfo.className = "roundInfo";
+    roundInfo.appendChild(document.createTextNode(`Круг: ${round}, Время круга: ${time}`));
+    roundsInfo.appendChild(roundInfo);
+  }
 });
 
 // === ===

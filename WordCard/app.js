@@ -2,13 +2,6 @@
 // window.onbeforeunload = function() {
 //   return "";
 // }
-// Запрет спящего режима
-var noSleep =  new  NoSleep ();
-document.addEventListener('click', function enableNoSleep() {
-  document.removeEventListener('click', enableNoSleep, false);
-  noSleep.enable();
-}, false);
-//
 
 var counterTrue = 0,
     counterFalse = 0,
@@ -42,7 +35,7 @@ function addDictionary() {
     }
   }
 }
-// 
+//
 // Запускаем функцию генерации карточки
 init();
 
