@@ -16,7 +16,7 @@ window.addEventListener("DOMContentLoaded", function(){
       top: 10px;
       left: 10px;
       padding: 5px;
-      font-family: verdana sans-serif;
+      font-family: verdana, sans-serif;
       font-size: 16px;
       background: #eee;
       color: #999;

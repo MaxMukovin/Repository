@@ -1,0 +1,63 @@
+body {
+  margin-top: 50px;
+  font-family: verdana, sans-serif;
+}
+p {margin: 2px;}
+
+div {
+  transition: all .3s;
+}
+#periodSettings{
+  width: 260px;
+  float: left;
+  cursor: pointer;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+
+}
+#periodSettings div {
+  width: 50px;
+  height: 50px;
+  float: left;
+  border: 1px solid #999;
+  text-align: center;
+  line-height: 50px;
+}
+#before {
+  width: 500px;
+  float: left;
+  margin-left: 20px;
+  height: 300px;
+  background: #ccc;
+}
+#before .column {
+  float: left;
+  width: 99px;
+  height: 100%;
+  border-right: 1px solid #888;
+}
+#before .column div {width: 100%}
+#before .g1 {background: #333}
+#before .g2 {background: #666}
+#before .g3 {background: #999}
+#before .p  {background: #222}
+
+#settings {
+  width: 100px;
+  float: left;
+  margin-left: 5px;
+  height: 300px;
+  background: lightseagreen
+}
+
+.row {
+  width: 100%;
+  height: 25%;
+  border: 1px solid #ccc;
+}
+.row input {
+  width: 30px;
+  background: #ccc;
+  border: none;
+}

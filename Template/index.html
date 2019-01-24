@@ -11,27 +11,6 @@
     <script src="../_DATA/app.js"></script>
   </head>
   <body>
-    <button id="start">Start</button>
-    <p id="timerS"></p>
-    <button id="stop">Stop</button>
-    <script type="text/javascript">
-      var timer = 0;
-      document.getElementById('start').onclick = function(){timer = new Date().getTime(); console.log(timer);}
-      document.getElementById('stop').onclick = function(){timer = 0}
-
-      var interval = setInterval(function(){
-          if (timer==0) return;
-          timerS.innerHTML = parseInt((new Date().getTime()-timer)/1000)
-      },1000);
-      </script>
-      <style media="screen">
-      body {
-        margin-top: 100px;
-      }
-    </style>
-
-
-
-    <script src="app.js"></script>
+    
   </body>
 </html>
