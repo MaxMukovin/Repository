@@ -12,6 +12,7 @@ window.addEventListener("keyup", go);
       goal3_Day = [0, 1, 1, 1, 0],
       priv_Day  = [1, 1, 1, 1, 1];
 
+
 go();
 
 function go() {
@@ -106,4 +107,34 @@ for (var i = 0; i < 15; i++) {
     }
   }
   periodSettings.appendChild(block)
+}
+
+// ===========================================
+// БАЛАНСИРОВКА
+// ===========================================
+
+buttonBalance.onclick = balance;
+function balance(){
+  var check = 0,
+      correction = 0;
+  for (var i = 0; i < 5; i++) {
+    check = goal1[i] + goal2[i] + goal3[i]
+    if (check > 100) {
+      correction = (check - 100) / 100
+      goal1[i] = parseInt(goal1[i] - goal1[i] * correction);
+      goal2[i] = parseInt(goal2[i] - goal2[i] * correction);
+      goal3[i] = parseInt(goal3[i] - goal3[i] * correction);
+      priv[i] = 100 - goal1[i] - goal2[i] - goal3[i];
+
+      before.children[i].children[0].style.height = `${goal1[i]}%`;
+      before.children[i].children[1].style.height = `${goal2[i]}%`;
+      before.children[i].children[2].style.height = `${goal3[i]}%`;
+      before.children[i].children[3].style.height = `${priv[i]}%`;
+
+      console.log(correction);
+      console.log(goal1);
+    }
+
+  }
+
 }
