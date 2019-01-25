@@ -4,8 +4,11 @@ body {
 }
 p {margin: 2px;}
 
-div {
+.column div {
   transition: all .3s;
+  overflow: hidden;
+  color: #ccc;
+  text-align: center;
 }
 #periodSettings{
   width: 260px;
