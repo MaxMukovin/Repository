@@ -10,7 +10,8 @@ var counterTrue = 0,
     structureArray = [],
     appDictionary = [],
     addCard = document.getElementById("card"),
-    newCard = {};
+    newCard = {},
+    settingState = 0;
 
 // Удаляем всё из Контейнера
 while (container.children.length > 0) {
@@ -126,15 +127,31 @@ function remove(){
 }
 
 // Панель настроек
-btnShowSettings.addEventListener("click", function(){
-  settingsField.style.height = `${46*3+58}px`;
-})
+btnShowSettings.onclick = function(){
+  if (settingState == 0) {
+    showSetting();
+  } else {
+    closeSetting();
+  }
+}
 
-btnConfirm.addEventListener("click", function(){
-  settingsField.style.height = "30px";
+btnConfirm.onclick = function(){
+  closeSetting();
   addDictionary();
   remove();
-})
+}
+
+function showSetting() {
+  settingsField.style.height = `${46*3+58}px`;
+  settingState = 1;
+  btnShowSettings.children[0].style.transform = "rotate(180deg)";
+}
+function closeSetting() {
+  settingsField.style.height = "30px";
+  btnShowSettings.children[0].style.transform = "rotate(0deg)";
+  settingState = 0;
+}
+
 
 dictionary1.addEventListener("click", function(){
   if (dictionary1.className == "dictionaries") {

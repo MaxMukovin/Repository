@@ -25,6 +25,39 @@ function go() {
   goal3_Motiv = _goal3_Motiv.value;
   priv_Motiv  = 100 - goal1_Motiv - goal2_Motiv - goal3_Motiv;
 
+  var goal1_MAX = (summArray(goal1_Day) * 100 / 500 * 100  - 5);
+
+  var goal2_MAX = (summArray(goal2_Day) * 100 / 500 * 100  - 2);
+  if (goal2_MAX > 100 - goal1_Motiv) {
+    goal2_MAX = 100 - goal1_Motiv - 2;
+  }
+  var goal3_MAX = (summArray(goal3_Day) * 100 / 500 * 100  - 0);
+  if (goal3_MAX > 100 - goal2_Motiv - goal1_Motiv) {
+    goal3_MAX = 100 - goal2_Motiv - goal1_Motiv - 1;
+  }
+
+  if (_goal1_Motiv.value > goal1_MAX && _goal1_Motiv.value >= 0) {
+    goal1_Motiv = goal1_MAX;
+  }
+  if (_goal2_Motiv.value > goal2_MAX && _goal2_Motiv.value >= 0) {
+    goal2_Motiv = goal2_MAX;
+  }
+  if (_goal3_Motiv.value > goal3_MAX && _goal3_Motiv.value >= 0) {
+    goal3_Motiv = goal3_MAX;
+  }
+  goal1_Motiv = Math.abs(goal1_Motiv);
+  goal2_Motiv = Math.abs(goal2_Motiv);
+  goal3_Motiv = Math.abs(goal3_Motiv);
+
+  _goal1_Motiv.value = goal1_Motiv;
+  _goal2_Motiv.value = goal2_Motiv;
+  _goal3_Motiv.value = goal3_Motiv;
+
+  goal1_Max.innerHTML = `MAX - ${goal1_MAX}%`;
+  goal2_Max.innerHTML = `MAX - ${goal2_MAX}%`;
+  goal3_Max.innerHTML = `MAX - ${goal3_MAX}%`;
+
+
   settings.children[3].children[1].innerHTML = `${priv_Motiv}%`
 
   for (var i = 0; i < 5; i++) {
