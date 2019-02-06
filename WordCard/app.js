@@ -11,7 +11,8 @@ var counterTrue = 0,
     appDictionary = [],
     addCard = document.getElementById("card"),
     newCard = {},
-    settingState = 0;
+    settingState = 0,
+    modeState = 0;
 
 // Удаляем всё из Контейнера
 while (container.children.length > 0) {
@@ -32,7 +33,7 @@ function addDictionary() {
   for (var i = 0; i < structureArray.length; i++) {
     if(structureArray[i] == 1){
       appDictionary = appDictionary.concat(dictionary[i]);
-      settingsField.children[i + 1].className = "dictionaries active";
+      dictionarysField.children[i].className = "dictionaries active";
     }
   }
 }
@@ -57,12 +58,18 @@ function init(){
   if (appDictionary[element][2] == undefined) {
     transcription = ''
   }
-  word.children[0].appendChild(document.createTextNode(`${appDictionary[element][0]}`));
-  word.children[1].appendChild(document.createTextNode(`${transcription}`));
-  translation.appendChild(document.createTextNode(`${appDictionary[element][1]}`));
+
+  if (modeState == 0) {
+    word.children[0].appendChild(document.createTextNode(`${appDictionary[element][0]}`));
+    word.children[1].appendChild(document.createTextNode(`${transcription}`));
+    translation.appendChild(document.createTextNode(`${appDictionary[element][1]}`));
+  } else {
+    word.children[0].appendChild(document.createTextNode(`${appDictionary[element][1]}`));
+    translation.appendChild(document.createTextNode(`${appDictionary[element][0]}`));
+  }
+
   btnShow.style.height = `${buttonHeight}px`;
 
-  // Начальные значения
   card.style.height = "0";
   card.style.opacity = "0";
   translation.style.opacity = "0";
@@ -75,8 +82,7 @@ function init(){
   btnFalse.addEventListener("click", btnFalseEvent);
   setTimeout(function(){card.style.height = `${buttonHeight + 72}px`; card.style.opacity = "1"}, 300)
 
-  var statText = `Всего: ${counterTrue + counterFalse} <br>
-                  Осталось: ${appDictionary.length} <br>
+  var statText = `Осталось: ${appDictionary.length} <br>
                   Правильно: ${counterTrue} (${Math.round(100 * counterTrue / (counterTrue + counterFalse + .001))}%) <br>
                   Неправильно: ${counterFalse} (${Math.round(100 * counterFalse / (counterTrue + counterFalse + .001))}%)<br>`
   stat.innerHTML = statText
@@ -135,6 +141,17 @@ btnShowSettings.onclick = function(){
   }
 }
 
+btnEngRus.onclick = function() {
+  modeState = 0;
+  btnEngRus.className = 'button active';
+  btnRusEng.className = 'button';
+}
+btnRusEng.onclick = function() {
+  modeState = 1;
+  btnEngRus.className = 'button';
+  btnRusEng.className = 'button active';
+}
+
 btnConfirm.onclick = function(){
   closeSetting();
   addDictionary();
@@ -142,18 +159,24 @@ btnConfirm.onclick = function(){
 }
 
 function showSetting() {
-  settingsField.style.height = `${46*3+58}px`;
+  settingsField.style.transform = "scaleY(1)";
+  settingsField.style.opacity = "1";
   settingState = 1;
   btnShowSettings.children[0].style.transform = "rotate(180deg)";
+  stat.style.opacity = ".15"
+  container.style.opacity = ".15"
 }
 function closeSetting() {
-  settingsField.style.height = "30px";
+  settingsField.style.transform = "scaleY(0)";
+  settingsField.style.opacity = "0";
   btnShowSettings.children[0].style.transform = "rotate(0deg)";
   settingState = 0;
+  stat.style.opacity = "1"
+  container.style.opacity = "1"
 }
 
 
-dictionary1.addEventListener("click", function(){
+dictionary1.onclick = function(){
   if (dictionary1.className == "dictionaries") {
     dictionary1.className = "dictionaries active"
     structureArray[0] = 1;
@@ -161,8 +184,8 @@ dictionary1.addEventListener("click", function(){
     dictionary1.className = "dictionaries"
     structureArray[0] = 0;
   }
-})
-dictionary2.addEventListener("click", function(){
+}
+dictionary2.onclick = function(){
   if (dictionary2.className == "dictionaries") {
     dictionary2.className = "dictionaries active"
     structureArray[1] = 1;
@@ -170,8 +193,8 @@ dictionary2.addEventListener("click", function(){
     dictionary2.className = "dictionaries"
     structureArray[1] = 0;
   }
-})
-dictionary3.addEventListener("click", function(){
+}
+dictionary3.onclick = function(){
   if (dictionary3.className == "dictionaries") {
     dictionary3.className = "dictionaries active"
     structureArray[2] = 1;
@@ -179,4 +202,4 @@ dictionary3.addEventListener("click", function(){
     dictionary3.className = "dictionaries"
     structureArray[2] = 0;
   }
-})
+}

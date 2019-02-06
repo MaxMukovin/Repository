@@ -15,12 +15,28 @@
   </head>
   <body>
     <div id="main">
+
       <div id="settings">
+        <button id="btnShowSettings"  class="button">
+          Настройки
+          <img src="img/arrow.png">
+        </button>
         <div id="settingsField">
-          <button id="btnShowSettings"  class="button">
-            Выбрать словарь
-            <img src="img/arrow.png">
-          </button>
+          <div class="mode">
+            <button id="btnEngRus" class="button active">
+              <img src="img/ENG.png" class="flag">
+              <img src="img/arrowTo.png" class="arrow">
+              <img src="img/RUS.png" class="flag">
+            </button>
+
+            <button id="btnRusEng" class="button">
+              <img src="img/RUS.png" class="flag">
+              <img src="img/arrowTo.png" class="arrow">
+              <img src="img/ENG.png" class="flag">
+            </button>
+          </div>
+
+          <div id="dictionarysField">
             <div id="dictionary1" class="dictionaries">
               <img src="img/dictionary.png" alt="img">
               <div class="infoDectionary">
@@ -29,6 +45,7 @@
               </div>
               <div class="chekMark"></div>
             </div>
+
             <div id="dictionary2" class="dictionaries">
               <img src="img/dictionary.png" alt="img">
               <div class="infoDectionary">
@@ -37,6 +54,7 @@
               </div>
               <div class="chekMark"></div>
             </div>
+
             <div id="dictionary3" class="dictionaries">
               <img src="img/dictionary.png" alt="img">
               <div class="infoDectionary">
@@ -45,9 +63,13 @@
               </div>
               <div class="chekMark"></div>
             </div>
+          </div>
+
           <button id="btnConfirm"  class="button">Применить</button>
         </div>
       </div>
+
+
       <div id="stat"></div>
       <div id="container">
         <div id="card">
