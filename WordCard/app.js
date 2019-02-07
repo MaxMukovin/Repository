@@ -88,9 +88,9 @@ function init(){
   progressBar.innerHTML = `${100 - parseInt(appDictionary.length/appDictionaryLength * 100)}%`;
   progress.innerHTML = `${appDictionaryLength - appDictionary.length}/${appDictionaryLength}`
 
-  // answerTrue.style.width = `${(100 * counterTrue / (counterTrue + counterFalse + .001))}%`;
-  // answerTrue.innerHTML = `${Math.round(100 * counterTrue / (counterTrue + counterFalse + .001))}%`;
-  // answerFalse.style.width = `${(100 * counterFalse / (counterTrue + counterFalse + .001))}%`;
+  answerTrue.style.width = `${(100 * counterTrue / (counterTrue + counterFalse + .001))}%`;
+  answerFalse.style.width = `${(100 * counterFalse / (counterTrue + counterFalse + .001))}%`;
+  answerTrue.innerHTML = `${Math.round(100 * counterTrue / (counterTrue + counterFalse + .001))}%`;
   // answerFalse.innerHTML = `${Math.round(100 * counterFalse / (counterTrue + counterFalse + .001))}%`;
 
 }
@@ -170,7 +170,7 @@ function showSetting() {
   settingsField.style.opacity = "1";
   settingState = 1;
   btnShowSettings.children[0].style.transform = "rotate(-180deg)";
-  stat.style.opacity = ".15"
+  // stat.style.opacity = ".15"
   container.style.opacity = ".15"
 }
 function closeSetting() {
@@ -178,7 +178,7 @@ function closeSetting() {
   settingsField.style.opacity = "0";
   btnShowSettings.children[0].style.transform = "rotate(0deg)";
   settingState = 0;
-  stat.style.opacity = "1"
+  // stat.style.opacity = "1"
   container.style.opacity = "1"
 }
 

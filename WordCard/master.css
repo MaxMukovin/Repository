@@ -136,7 +136,7 @@ body {
 
 }
 /* Заперщает выделение текста */
-.dictionaries, #stat {
+.dictionaries, .info {
 -moz-user-select: none;
 -khtml-user-select: none;
 user-select: none;
@@ -200,18 +200,16 @@ user-select: none;
   line-height: 20px;
 }
 #answerTrue {
+  float: left;
   width: 0%;
   background: #4caf50;
 }
 #answerFalse {
+  float: right;
   width: 0%;
   background: #ff5252;
 }
-
-
-
 /*==================================================================  */
-
 
 #container {
   margin: 10px;
