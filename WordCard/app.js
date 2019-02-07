@@ -9,6 +9,7 @@ var counterTrue = 0,
     element,
     structureArray = [],
     appDictionary = [],
+    appDictionaryLength = 0,
     addCard = document.getElementById("card"),
     newCard = {},
     settingState = 0,
@@ -18,13 +19,13 @@ var counterTrue = 0,
 while (container.children.length > 0) {
   container.removeChild(container.firstChild)
 }
-//
+
 // Создаём массив со структурой
 for (var i = 0; i < dictionary.length; i++) {
   structureArray.push(0)
 }
 structureArray[0] = 1;
-//
+
 // Создаём словарь на основании массива структуры
 addDictionary();
 
@@ -36,6 +37,7 @@ function addDictionary() {
       dictionarysField.children[i].className = "dictionaries active";
     }
   }
+  appDictionaryLength = appDictionary.length;
 }
 //
 // Запускаем функцию генерации карточки
@@ -82,10 +84,15 @@ function init(){
   btnFalse.addEventListener("click", btnFalseEvent);
   setTimeout(function(){card.style.height = `${buttonHeight + 72}px`; card.style.opacity = "1"}, 300)
 
-  var statText = `Осталось: ${appDictionary.length} <br>
-                  Правильно: ${counterTrue} (${Math.round(100 * counterTrue / (counterTrue + counterFalse + .001))}%) <br>
-                  Неправильно: ${counterFalse} (${Math.round(100 * counterFalse / (counterTrue + counterFalse + .001))}%)<br>`
-  stat.innerHTML = statText
+  progressBar.style.width = `${100 - parseInt(appDictionary.length/appDictionaryLength * 100)}%`;
+  progressBar.innerHTML = `${100 - parseInt(appDictionary.length/appDictionaryLength * 100)}%`;
+  progress.innerHTML = `${appDictionaryLength - appDictionary.length}/${appDictionaryLength}`
+
+  // answerTrue.style.width = `${(100 * counterTrue / (counterTrue + counterFalse + .001))}%`;
+  // answerTrue.innerHTML = `${Math.round(100 * counterTrue / (counterTrue + counterFalse + .001))}%`;
+  // answerFalse.style.width = `${(100 * counterFalse / (counterTrue + counterFalse + .001))}%`;
+  // answerFalse.innerHTML = `${Math.round(100 * counterFalse / (counterTrue + counterFalse + .001))}%`;
+
 }
 
 // События
@@ -162,7 +169,7 @@ function showSetting() {
   settingsField.style.transform = "scaleY(1)";
   settingsField.style.opacity = "1";
   settingState = 1;
-  btnShowSettings.children[0].style.transform = "rotate(180deg)";
+  btnShowSettings.children[0].style.transform = "rotate(-180deg)";
   stat.style.opacity = ".15"
   container.style.opacity = ".15"
 }

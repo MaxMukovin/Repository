@@ -1,36 +1,48 @@
 body {
   margin: 0;
+  padding: 0;
 }
-
-header {
-  background: #eee;
-  margin: 0
-}
-
-.backBtn {
-  text-decoration: none;
-  display: inline-block;
-  transition: all .3s;
-  margin: 5px;
-  padding: 5px;
-  font-family: verdana sans-serif;
-  font-size: 16px;
-  background: #eee;
-  color: #999;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
-}
-.backBtn:hover {
-  border: 1px solid #ccc;
-  color: #555;
-  box-shadow: 1px 2px 3px rgba(0,0,0,0.3);
-}
-
-
 #container {
   margin: auto;
-  margin-top: 20px;
-  width: 70%;
+  margin-top: 50px;
+  width: 500px;
+}
+#parrentBox {
+  background: #666;
+}
 
+.controls {
+  margin-bottom: 5px;
+  overflow: auto;
+}
+.controls input {
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+}
+.w {
+  width: 31.3%;
+  height: 25px;
+  float: left;
+  display: block;
+  float: left;
+  border: none;
+  margin: 0 1% 0 1%;
+}
+#confirm {
+  color: #fff;
+  background: #4caf50;
+  transition: all .3s;
+  cursor: pointer;
+  border-radius: 2px;
+  border: none;
+  font-size: 14px;
+}
+#confirm:hover {background: #66BE6A}
+
+@media screen and (orientation: portrait){
+  #container {width: 100%;}
+}
+
+::-webkit-scrollbar {
+  width: 0;
 }

@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="master.css"/>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+    <link rel="stylesheet" href="master.css"/>
     <title>MineSweeper</title>
     <script src="../_DATA/QRcode generator/qrcode.js"></script>
     <script src="../_DATA/QRcode generator/app.js"></script>
     <script src="../_DATA/app.js"></script>
   </head>
   <body>
-    <script src="app.js"></script>
+    <div id="container">
+      <div class="controls">
+        <input id="FieldX" class="w">
+        <input id="FieldY" class="w">
+        <button id="confirm" class="w">Применить</button>
+      </div>
+      <div id="parrentBox" class="parrentBox">
+        <script src="app.js"></script>
+      </div>
+    </div>
    </body>
 </html>
