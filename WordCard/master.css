@@ -244,38 +244,50 @@ user-select: none;
   color: #444;
   overflow: hidden;
   transition: all .3s;
-  height: 0;
   box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)
 }
 #text {
-  height: 62px;
+  overflow: hidden;
+  padding: 7px;
+}
+#word {
+  margin-bottom: 5px;
+  padding-bottom: 3px;
+  overflow: hidden;
+  border-bottom: 1px solid #eee;
+}
+#word span, #translation span {
+  float: left;
+  color: #888;
+  font-size: .6em;
+  width: 100%;
 }
 #word p {
+  display: block;
+  float: left;
   margin: 0;
   padding: 0;
   color: #444;
-  font-size: 22px;
-  font-family: inherit;
-  padding: 5px 0 0 5px;
-  display: inline-block;
+  font-size: 1.2em;
 }
 #word small {
-  display: inline-block;
-  font-size: 20px;
-  font-family: inherit;
+  display: block;
+  float: left;
+  font-size: 1.2em;
   margin-left: 5px;
   color: #999;
 }
-#translation {
+#translation p {
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
   color: #555;
-  height: 23px;
   transition: all .3s;
-  padding-left: 5px;
-  font-size: 20px;
-  font-family: inherit;
-  overflow: hidden;
+  font-size: 1.1em;
 }
 #control {
+  height: 40px;
   border-top: 1px solid #ccc;
   overflow: hidden;
   background: #f8f8f8;
@@ -309,7 +321,6 @@ user-select: none;
   cursor: pointer;
   border-radius: 2px;
   border: none;
-  /* font-size: 14px; */
   font-size: 1em;
 }
 .w100 {

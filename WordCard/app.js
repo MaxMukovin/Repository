@@ -62,19 +62,20 @@ function init(){
   }
 
   if (modeState == 0) {
-    word.children[0].appendChild(document.createTextNode(`${appDictionary[element][0]}`));
-    word.children[1].appendChild(document.createTextNode(`${transcription}`));
-    translation.appendChild(document.createTextNode(`${appDictionary[element][1]}`));
+    word.children[1].appendChild(document.createTextNode(`${appDictionary[element][0]}`));
+    word.children[2].appendChild(document.createTextNode(`${transcription}`));
+    // translation.children[1].appendChild(document.createTextNode(`${appDictionary[element][1]}`));
+    translation.children[1].innerHTML = `${appDictionary[element][1]}`
   } else {
-    word.children[0].appendChild(document.createTextNode(`${appDictionary[element][1]}`));
-    translation.appendChild(document.createTextNode(`${appDictionary[element][0]}`));
+    word.children[1].appendChild(document.createTextNode(`${appDictionary[element][1]}`));
+    translation.children[1].appendChild(document.createTextNode(`${appDictionary[element][0]}`));
   }
 
   btnShow.style.height = `${buttonHeight}px`;
 
-  card.style.height = "0";
+  // card.style.height = "0";
   card.style.opacity = "0";
-  translation.style.opacity = "0";
+  translation.children[1].style.opacity = "0";
   btnShow.style.marginTop = "0";
   btnShow.style.opacity = "1";
   btnTrue.style.height = "0";
@@ -82,7 +83,7 @@ function init(){
   btnShow.addEventListener("click", btnShowEvent);
   btnTrue.addEventListener("click", btnTrueEvent);
   btnFalse.addEventListener("click", btnFalseEvent);
-  setTimeout(function(){card.style.height = `${buttonHeight + 72}px`; card.style.opacity = "1"}, 300)
+  setTimeout(function(){card.style.opacity = "1"}, 300)
 
   progressBar.style.width = `${100 - parseInt(appDictionary.length/appDictionaryLength * 100)}%`;
   progressBar.innerHTML = `${100 - parseInt(appDictionary.length/appDictionaryLength * 100)}%`;
@@ -97,8 +98,8 @@ function init(){
 // События
 
 function btnShowEvent(){
-  translation.style.opacity = "1";
-  btnShow.style.height = "0px";
+  translation.children[1].style.opacity = "1";
+  btnShow.style.height = "0";
   btnShow.style.opacity = "0";
   btnShow.style.marginTop = "-12px";
   btnTrue.style.height = `${buttonHeight}px`;

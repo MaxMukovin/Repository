@@ -47,13 +47,13 @@ var roundTime = {
      },
     }
 
-console.log(roundTime.time());
+// console.log(roundTime.time());
 
 function stopWatch(){
   // Вычисляем время от точки отсчёта (2)
   second = pauseMinute * 60 + pauseSecond + parseInt((new Date().getTime()-timer)/1000) - minute * 60;
   roundTime.second++;
-  if (second == 60) {
+  while (second > 60) {
     second = second - 60;
     minute++;
   }
@@ -133,12 +133,12 @@ btnRound.addEventListener('click', function(){
     totalDistance.innerHTML = _distance;
 
     var roundInfo = document.createElement('div');
-    roundInfo.className = "roundInfo";
-    roundInfo.appendChild(document.createTextNode(`Круг: ${round}, Время круга: ${roundTime.time()}`));
-    roundsInfo.appendChild(roundInfo);
-    roundTime.second = 0;
-    roundTime.minute = 0;
-    btnRound.className = "btnRound button inactive";
+        roundInfo.className = "roundInfo";
+        roundInfo.appendChild(document.createTextNode(`Круг: ${round}, Время круга: ${roundTime.time()}`));
+        roundsInfo.appendChild(roundInfo);
+        roundTime.second = 0;
+        roundTime.minute = 0;
+        btnRound.className = "btnRound button inactive";
   }
 });
 
