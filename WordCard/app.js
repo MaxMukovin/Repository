@@ -91,8 +91,7 @@ function init(){
   answerTrue.style.width = `${(100 * counterTrue / (counterTrue + counterFalse + .001))}%`;
   answerFalse.style.width = `${(100 * counterFalse / (counterTrue + counterFalse + .001))}%`;
   answerTrue.innerHTML = `${Math.round(100 * counterTrue / (counterTrue + counterFalse + .001))}%`;
-  // answerFalse.innerHTML = `${Math.round(100 * counterFalse / (counterTrue + counterFalse + .001))}%`;
-
+  answerFalse.innerHTML = `${100 - Math.round(100 * counterTrue / (counterTrue + counterFalse + .001))}%`;
 }
 
 // События
@@ -162,6 +161,8 @@ btnRusEng.onclick = function() {
 btnConfirm.onclick = function(){
   closeSetting();
   addDictionary();
+  counterTrue = 0;
+  counterFalse = 0;
   remove();
 }
 
