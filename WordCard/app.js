@@ -46,7 +46,9 @@ init();
 // Функция генерации карточки
 function init(){
   newCard = addCard.cloneNode(true);
-  container.appendChild(newCard);
+
+  container.insertBefore(newCard, container.children[0]);
+  // container.appendChild(newCard);
 
   if (appDictionary.length == 0) {
     alert("Весь словарь пройден! Начать заново");
@@ -73,9 +75,7 @@ function init(){
 
   btnShow.style.height = `${buttonHeight}px`;
 
-  // card.style.height = "0";
-  card.style.opacity = "0";
-  translation.children[1].style.opacity = "0";
+  // translation.children[1].style.opacity = "0";
   btnShow.style.marginTop = "0";
   btnShow.style.opacity = "1";
   btnTrue.style.height = "0";
@@ -83,14 +83,17 @@ function init(){
   btnShow.addEventListener("click", btnShowEvent);
   btnTrue.addEventListener("click", btnTrueEvent);
   btnFalse.addEventListener("click", btnFalseEvent);
-  setTimeout(function(){card.style.opacity = "1"}, 300)
+  setTimeout(function(){
+    card.style.opacity = "1";
+    card.style.transform = "scaleY(1)"
+  }, 300)
 
   progressBar.style.width = `${100 - parseInt(appDictionary.length/appDictionaryLength * 100)}%`;
   progressBar.innerHTML = `${100 - parseInt(appDictionary.length/appDictionaryLength * 100)}%`;
   progress.innerHTML = `${appDictionaryLength - appDictionary.length}/${appDictionaryLength}`
 
-  answerTrue.style.width = `${(100 * counterTrue / (counterTrue + counterFalse + .001))}%`;
-  answerFalse.style.width = `${(100 * counterFalse / (counterTrue + counterFalse + .001))}%`;
+  answerTrue.style.width = `${parseInt(100 * counterTrue / (counterTrue + counterFalse))}%`;
+  answerFalse.style.width = `${100 - parseInt(100 * counterTrue / (counterTrue + counterFalse))}%`;
   answerTrue.innerHTML = `${Math.round(100 * counterTrue / (counterTrue + counterFalse + .001))}%`;
   answerFalse.innerHTML = `${100 - Math.round(100 * counterTrue / (counterTrue + counterFalse + .001))}%`;
 }
@@ -121,20 +124,21 @@ function btnFalseEvent(){
 
 function remove(){
   card.id = "cardOld";
-  text.id = "textOld";
-  word.id = 'wordOld';
-  translation.id = "translationOld";
-  control.id = "controlOld";
-  btnShow.id = "btnShowOld";
-  btnTrue.id = "btnTrueOld";
-  btnFalse.id = 'btnFalseOld';
-  cardOld.style.height = "0";
-  cardOld.style.marginLeft = "-100px";
+  text.id = "";
+  word.id = "";
+  translation.id = "";
+  control.id = "";
+  btnShow.id = "";
+  btnTrue.id = "";
+  btnFalse.id = "";
+  cardOld.style.transform = "scaleY(0)";
   cardOld.style.opacity = "0";
-  setTimeout(init, 0);
+  cardOld.style.marginLeft = "-50%";
+  init();
+  // setTimeout(init, 0);
   setTimeout(function(){
     while (container.children.length > 1) {
-      container.removeChild(container.children[0])
+      container.removeChild(container.children[1])
     }
   }, 300);
 }

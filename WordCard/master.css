@@ -1,13 +1,15 @@
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  /* overflow-y: hidden; */
   font-family: verdana, sans-serif;
+  overscroll-behavior: contain;
 }
 #main {
   max-width: 500px;
-  /* width: 30%; */
   margin: auto;
+  /* overflow-: hidden; */
+  /* overflow: visible; */
 }
 /*==================================================================  */
 #settings {
@@ -149,9 +151,10 @@ user-select: none;
 
 /*==================================================================  */
 .info {
+  /* width: 100%; */
   overflow: hidden;
   margin-top: 10px;
-  color: #666;
+  color: #686868;
   background: #eee;
   padding: 5px;
   box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)
@@ -233,36 +236,52 @@ user-select: none;
 /*==================================================================  */
 
 #container {
-  margin: 10px;
+  margin: auto;
+  width: 97%;
+  position: relative;
+  /* height: 100vh; */
   transition: all .3s;
+  /* overflow: auto; */
+  /* overflow-x: hidden; */
+
 }
-#card {
-  margin-top: 5px;
+.card {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 10px;
   background: #f8f8f8;
-  border: 1px solid #ccc;
+  float: left;
+  margin-left: -1px;
+  border: 1px solid #eee;
   border-radius: 2px;
   color: #444;
-  overflow: hidden;
   transition: all .3s;
-  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)
+  transform-origin: top;
+  transform: scaleY(0);
+  opacity: 0;
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+  position: absolute;
 }
-#text {
+#cardOld {
+  /* transform-origin: bottom; */
+}
+.text {
   overflow: hidden;
   padding: 7px;
 }
-#word {
+.word {
   margin-bottom: 5px;
   padding-bottom: 3px;
   overflow: hidden;
   border-bottom: 1px solid #eee;
 }
-#word span, #translation span {
+.word span, .translation span {
   float: left;
   color: #888;
   font-size: .6em;
   width: 100%;
 }
-#word p {
+.word p {
   display: block;
   float: left;
   margin: 0;
@@ -270,14 +289,14 @@ user-select: none;
   color: #444;
   font-size: 1.2em;
 }
-#word small {
+.word small {
   display: block;
   float: left;
   font-size: 1.2em;
   margin-left: 5px;
   color: #999;
 }
-#translation p {
+.translation p {
   display: block;
   float: left;
   margin: 0;
@@ -286,14 +305,14 @@ user-select: none;
   transition: all .3s;
   font-size: 1.1em;
 }
-#control {
+.control {
   height: 40px;
   border-top: 1px solid #ccc;
   overflow: hidden;
   background: #f8f8f8;
   padding: 5px;
 }
-#btnShow {
+.btnShow {
   color: #eee;
   width: 100%;
   margin-bottom: 10px;
@@ -302,19 +321,19 @@ user-select: none;
   display: block;
   background: #1867c0;
 }
-#btnTrue{
+.btnTrue{
   color: #eee;
   background: #4caf50;
   float: right;
 }
-#btnFalse{
+.btnFalse{
   color: #eee;
   background: #ff5252;
   float: left;
 }
-#btnShow:hover {background: #3C85D6}
-#btnTrue:hover {background: #66BE6A}
-#btnFalse:hover {background: #FF7272}
+.btnShow:hover {background: #3C85D6}
+.btnTrue:hover {background: #66BE6A}
+.btnFalse:hover {background: #FF7272}
 
 .button {
   transition: all .3s;

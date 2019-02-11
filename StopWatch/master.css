@@ -1,10 +1,12 @@
+body {
+  overscroll-behavior: contain;
+}
 .main {
   margin: auto;
   margin-top: 50px;
   /* width: 50%; */
   font-family: verdana, sans-serif;
   color: #444;
-  overflow: hidden;
 }
 
 @media screen and (orientation: portrait){
@@ -44,7 +46,7 @@
   color: #888;
 }
 .distanceSettings input:checked {
-  background: red
+  /* background: red */
 }
 .button {
   color: #eee;
@@ -146,7 +148,33 @@
   margin-top: 20px;
 }
 .roundInfo {
+  transition: all .3s;
   width: 100%;
-  padding: 5px;
   border-top: 1px solid #ddd;
+  transform-origin: top;
+  transform: scaleY(0);
+  opacity: 0;
+}
+.progressField {
+  width: 100%;
+  overflow: hidden;
+  background: #ccc;
+  height: 25px;
+  line-height: 25px;
+  color: #fff;
+  font-size: 1em;
+  text-align: left;
+  border-radius: 3px;
+  margin: 2px 0 5px;
+}
+.progress {
+  height: 100%;
+  transition: all .3s;
+  float: left;
+  background: #1867c0;
+}
+.progress p{
+  padding: 0;
+  margin: 0;
+  padding-left: 5px;
 }

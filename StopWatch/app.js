@@ -5,7 +5,7 @@ var noSleep =  new NoSleep (),
 function enableNoSleep() {
   noSleep.enable();
 	setTimeout(function(){noSleep.disable();}, 100);
-  timerNS = setTimeout(enableNoSleep, 30000);
+  timerNS = setTimeout(enableNoSleep, 15000);
 };
 //=========
 // Запрет перезагрузки
@@ -14,46 +14,28 @@ function enableNoSleep() {
 // }
 
 var minute = 0,
-    pauseMinute = 0,
     second = 0,
+    pauseMinute = 0,
     pauseSecond = 0,
+    lastTime = 0,
     time = `${minute}:${second}`,
     timerId,
     timer = 0,
     status = 0,
     round = 0,
     _distance = 0,
-    delay = 10;
+    delay = 10,
+    roundTime = [],
+    counterDelay = 0,
+    addRoundInfo = newRoundInfo;
 
-var roundTime = {
-    second: 0,
-    minute: 0,
-    time: function(){
-        while (this.second > 60) {
-          this.second = this.second - 60;
-          this.minute++;
-        }
-
-        var _minute = this.minute,
-        _second = this.second;
-
-        if (this.minute < 10) {
-          _minute = `0${this.minute}`
-        }
-        if (this.second < 10) {
-          _second = `0${this.second}`
-        }
-       return `${_minute}:${_second}`;
-     },
-    }
-
-// console.log(roundTime.time());
+roundsInfo.removeChild(roundsInfo.children[0]);
 
 function stopWatch(){
+  counterDelay++;
   // Вычисляем время от точки отсчёта (2)
   second = pauseMinute * 60 + pauseSecond + parseInt((new Date().getTime()-timer)/1000) - minute * 60;
-  roundTime.second++;
-  while (second > 60) {
+  while (second >= 60) {
     second = second - 60;
     minute++;
   }
@@ -73,7 +55,7 @@ function stopWatch(){
   if (status == 1) {
     timerId = setTimeout(stopWatch, 1000)
   }
-  if (roundTime.second > delay) {
+  if (counterDelay > delay) {
     btnRound.className = "btnRound button";
   } else {
     btnRound.className = "btnRound button inactive";
@@ -112,9 +94,10 @@ btnClear.onclick = function(){
   timer = 0;
   status = 0;
   round = 0;
-  roundTime.second = 0;
-  roundTime.minute = 0;
+  lastTime = 0;
   _distance = 0;
+  counterDelay = 0;
+  roundTime = [];
 
   btnStart.className = "button w50 enable";
   btnClear.className = "button disable";
@@ -122,24 +105,65 @@ btnClear.onclick = function(){
   rounds.innerHTML = '0';
   totalDistance.innerHTML = '0';
 
+  while (roundsInfo.children.length > 0) {
+    roundsInfo.removeChild(roundsInfo.firstChild);
+  }
 };
 
-btnRound.addEventListener('click', function(){
-  if (roundTime.second >= delay) {
+btnRound.onclick = function(){
+  if (counterDelay >= delay) {
     round++;
     rounds.innerHTML = round;
     _distance = _distance + parseInt(distance.value)
 
     totalDistance.innerHTML = _distance;
 
-    var roundInfo = document.createElement('div');
-        roundInfo.className = "roundInfo";
-        roundInfo.appendChild(document.createTextNode(`Круг: ${round}, Время круга: ${roundTime.time()}`));
+    var _second = minute * 60 + second - lastTime,
+        _minute = 0;
+
+    console.log(lastTime);
+
+    lastTime = lastTime + _second;
+    while (_second >= 60) {
+      _second = _second - 60;
+      _minute++;
+    }
+
+    if (_minute < 10) {
+      _minute = `0${_minute}`
+    }
+    if (_second < 10) {
+      _second = `0${_second}`
+    }
+
+    var roundInfo = {};
+        roundInfo = addRoundInfo.cloneNode(true);
+        roundInfo.id = '';
+        roundInfo.children[0].innerHTML = `Круг: ${round}`;
+        roundInfo.children[1].children[0].children[0].innerHTML = `${_minute}:${_second}`
         roundsInfo.appendChild(roundInfo);
-        roundTime.second = 0;
-        roundTime.minute = 0;
-        btnRound.className = "btnRound button inactive";
+
+    setTimeout(function(){
+      roundInfo.style.transform = "scaleY(1)";
+      roundInfo.style.opacity = "1";
+    }, 0)
+
+    btnRound.className = "btnRound button inactive";
+
+    roundTime.push(parseInt(_second) + parseInt(_minute) * 60)
+
+    for (var i = 0; i < roundTime.length; i++) {
+      roundsInfo.children[i].children[1].children[0].style.background = "";
+      roundsInfo.children[i].children[1].children[0].style.width = `${roundTime[i] / Math.max.apply(null, roundTime) * 100}%`;
+      if (roundTime[i] == Math.max.apply(null, roundTime)) {
+        roundsInfo.children[i].children[1].children[0].style.background = "#ff5252";
+      }
+      if (roundTime[i] == Math.min.apply(null, roundTime)) {
+        roundsInfo.children[i].children[1].children[0].style.background = "#4caf50";
+      }
+    }
+    counterDelay = 0;
   }
-});
+};
 
 // === ===

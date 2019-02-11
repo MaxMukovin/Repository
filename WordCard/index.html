@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="theme-color" content="#1867c0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache">
     <link rel="stylesheet" href="master.css"/>
-    <link rel="stylesheet" href="masterOld.css"/>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
     <title>WordCard</title>
     <script src="../_DATA/QRcode generator/qrcode.js"></script>
@@ -81,7 +81,6 @@
 
         <div class="statistics">
           <span style="float: left;">Статистика</span>
-          <!-- <span style="float: right">Неверно</span> -->
           <div class="bar statBar">
             <div id="answerFalse" class="answer">0%</div>
             <div id="answerTrue" class="answer">0%</div>
@@ -91,22 +90,22 @@
       </div>
 
       <div id="container">
-        <div id="card">
-          <div id="text">
-            <div id="word">
+        <div id="card" class="card">
+          <div id="text" class="text">
+            <div id="word" class="word">
               <span>Оригинал</span>
               <p></p>
               <small></small>
             </div>
-            <div id="translation">
+            <div id="translation" class="translation">
               <span>Перевод</span>
               <p></p>
             </div>
           </div>
-          <div id="control">
-            <button id="btnShow"  class="button">Показать перевод</button>
-            <button id="btnFalse" class="w100 button">Неверно</button>
-            <button id="btnTrue"  class="w100 button">Верно</button>
+          <div id="control" class="control">
+            <button id="btnShow"  class="button btnShow">Показать перевод</button>
+            <button id="btnFalse" class="w100 button btnFalse">Неверно</button>
+            <button id="btnTrue"  class="w100 button btnTrue">Верно</button>
           </div>
         </div>
       </div>
