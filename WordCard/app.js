@@ -3,21 +3,51 @@
 //   return "";
 // }
 
-var counterTrue = 0,
-    counterFalse = 0,
-    buttonHeight = 40,
-    element,
-    structureArray = [],
-    appDictionary = [],
+var counterTrue = 0, //Счётчик ответов Верно
+    counterFalse = 0, //Счётчик ответов Неверно
+    buttonHeight = 40, //Высота Кнопок
+    element, //Элемент массива, выбранный рандомно
+    structureArray = [], //Массив со структурой
+    appDictionary = [], //Массив состоящий из активных словарей
     appDictionaryLength = 0,
-    addCard = document.getElementById("card"),
-    newCard = {},
-    settingState = 0,
-    modeState = 0;
+    addCard = card, //Образец новой карточки HTML
+    newCard = {}, //Новая карточка, объект для добавления
+    addDictionary = dictionarySample, //Образец нового словаря HTML
+    settingState = 0, //Состояние поля настроек открыто/закрыто
+    modeState = 0; //Состояние переключателя режима
 
 // Удаляем всё из Контейнера
-while (container.children.length > 0) {
-  container.removeChild(container.firstChild)
+container.removeChild(container.children[0]);
+dictionarysField.removeChild(dictionarysField.children[0]);
+
+// Создаём список словарей
+for (var i = 0; i < dictionary.length; i++) {
+  !function(){
+    var newDictionary = addDictionary.cloneNode(true);
+        newDictionary.id = i;
+        newDictionary.children[1].children[0].innerHTML = dictionary[i].name;
+
+        var transcription = 0;
+        for (var n = 0; n < dictionary[i].dictionary.length; n++) {
+          if (dictionary[i].dictionary[n][2] != undefined) {
+            transcription++
+          }
+        }
+        transcription = Math.round(transcription / dictionary[i].dictionary.length * 100);
+
+        newDictionary.children[1].children[1].innerHTML = `Элементов:${dictionary[i].dictionary.length}; Транскрипция: ${transcription}%`
+
+        newDictionary.onclick = function(){
+          if (newDictionary.className == "dictionaries") {
+            newDictionary.className = "dictionaries active"
+            structureArray[this.id] = 1;
+          } else {
+            newDictionary.className = "dictionaries"
+            structureArray[this.id] = 0;
+          }
+        }
+    dictionarysField.appendChild(newDictionary);
+  }();
 }
 
 // Создаём массив со структурой
@@ -27,13 +57,13 @@ for (var i = 0; i < dictionary.length; i++) {
 structureArray[0] = 1;
 
 // Создаём словарь на основании массива структуры
-addDictionary();
+addDictionarys();
 
-function addDictionary() {
+function addDictionarys() {
   appDictionary = [];
   for (var i = 0; i < structureArray.length; i++) {
     if(structureArray[i] == 1){
-      appDictionary = appDictionary.concat(dictionary[i]);
+      appDictionary = appDictionary.concat(dictionary[i].dictionary);
       dictionarysField.children[i].className = "dictionaries active";
     }
   }
@@ -54,8 +84,10 @@ function init(){
     alert("Весь словарь пройден! Начать заново");
     counterTrue = 0;
     counterFalse = 0;
-    structureArray[0] = 1;
-    addDictionary()
+    if (structureArray.reduce((accumulator, currentValue) => accumulator + currentValue) == 0) {
+      structureArray[0] = 1;
+    }
+    addDictionarys()
   }
   element = parseInt(Math.random() * appDictionary.length);
   var transcription = appDictionary[element][2];
@@ -165,7 +197,7 @@ btnRusEng.onclick = function() {
 
 btnConfirm.onclick = function(){
   closeSetting();
-  addDictionary();
+  addDictionarys();
   counterTrue = 0;
   counterFalse = 0;
   remove();
@@ -176,7 +208,7 @@ function showSetting() {
   settingsField.style.opacity = "1";
   settingState = 1;
   btnShowSettings.children[0].style.transform = "rotate(-180deg)";
-  // stat.style.opacity = ".15"
+  stat.style.opacity = ".15"
   container.style.opacity = ".15"
 }
 function closeSetting() {
@@ -184,35 +216,6 @@ function closeSetting() {
   settingsField.style.opacity = "0";
   btnShowSettings.children[0].style.transform = "rotate(0deg)";
   settingState = 0;
-  // stat.style.opacity = "1"
+  stat.style.opacity = "1"
   container.style.opacity = "1"
-}
-
-
-dictionary1.onclick = function(){
-  if (dictionary1.className == "dictionaries") {
-    dictionary1.className = "dictionaries active"
-    structureArray[0] = 1;
-  } else {
-    dictionary1.className = "dictionaries"
-    structureArray[0] = 0;
-  }
-}
-dictionary2.onclick = function(){
-  if (dictionary2.className == "dictionaries") {
-    dictionary2.className = "dictionaries active"
-    structureArray[1] = 1;
-  } else {
-    dictionary2.className = "dictionaries"
-    structureArray[1] = 0;
-  }
-}
-dictionary3.onclick = function(){
-  if (dictionary3.className == "dictionaries") {
-    dictionary3.className = "dictionaries active"
-    structureArray[2] = 1;
-  } else {
-    dictionary3.className = "dictionaries"
-    structureArray[2] = 0;
-  }
 }

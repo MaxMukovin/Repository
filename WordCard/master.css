@@ -55,7 +55,7 @@ body {
   margin: auto;
   text-align: center;
   display: block;
-  width: 95%;
+  width: 98%;
   height: 30px;
   color: #eee;
   background: #4caf50;
@@ -151,7 +151,7 @@ user-select: none;
 
 /*==================================================================  */
 .info {
-  /* width: 100%; */
+  transition: all .3s;
   overflow: hidden;
   margin-top: 10px;
   color: #686868;
@@ -301,6 +301,7 @@ user-select: none;
   float: left;
   margin: 0;
   padding: 0;
+  opacity: 0;
   color: #555;
   transition: all .3s;
   font-size: 1.1em;
