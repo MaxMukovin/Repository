@@ -121,8 +121,6 @@ btnRound.onclick = function(){
     var _second = minute * 60 + second - lastTime,
         _minute = 0;
 
-    console.log(lastTime);
-
     lastTime = lastTime + _second;
     while (_second >= 60) {
       _second = _second - 60;

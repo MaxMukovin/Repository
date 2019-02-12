@@ -1,34 +1,52 @@
+var newFlower = flower;
+document.body.removeChild(document.body.children[0])
+
+var counter = 0;
+
+setInterval(function(){
+  counter++;
+}, 300)
+
 function addRound(left, top) {
-  var size = 50;
-  var round = document.createElement("div");
-      round.style.transition = "all .3s";
-      round.style.width = "0px";
-      round.style.height = "0px";
-      round.style.opacity = "0";
-      round.style.background = "grey";
-      round.style.borderRadius = "50%";
-      round.style.position = "absolute";
-      round.style.left = `${left}px`;
-      round.style.top = `${top}px`;
-  document.body.appendChild(round)
+
+  if (counter < 1) {
+    return;
+  }
+  console.log(counter);
+  counter = 0;
+
+  var addFlower = newFlower.cloneNode(true);
+      addFlower.style.left = `${left}px`;
+      addFlower.style.top = `${top}px`;
+      addFlower.style.marginTop = `-58px`;
+      addFlower.style.marginLeft = `-57px`;
+  var colorR = rnd(0, 255),
+      colorG = rnd(0, 255),
+      colorB = rnd(0, 255);
+
+      for (var i = 0; i < addFlower.children.length; i++) {
+        addFlower.children[i].children[0].style.background = `rgb(${colorR}, ${colorG}, ${colorB})`;
+      }
+
+  document.body.appendChild(addFlower)
+
 
   setTimeout(function(){
-    round.style.width = `${size}px`;
-    round.style.height = `${size}px`;
-    round.style.left = `${left - size / 2}px`;
-    round.style.top = `${top - size / 2}px`;
-    round.style.opacity = "0.5";
+    addFlower.style.transform = `scale(.${rnd(20,45)})`;
+  }
+  , 0)
 
-  }, 0)
-  setTimeout(function(){
-    round.style.opacity = "0";
-  }, 300);
-
-  setTimeout(function(){
-    document.body.removeChild(round)
-  }, 600)
 }
 
-window.addEventListener("click", function(init) {
-  addRound(init.clientX, init.clientY);
-})
+function rnd(min, max) {
+  return Math.round(min + Math.random() * (max - min));
+}
+
+window.onmousemove = function(init) {
+  if (init.which == 1) {
+    addRound(init.clientX, init.clientY)
+  }
+}
+window.onclick = function(init) {
+  addRound(init.clientX, init.clientY)
+}

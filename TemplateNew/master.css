@@ -1,12 +1,13 @@
 #flower {
-  position: absolute;
+  /* overflow: hidden; */
   width: 115px;
   height: 115px;
+  /* background: red; */
   margin-top: 100px;
   margin-left: 100px;
   transform-origin: center;
   transform: scale(0);
-  transition: all .5s;
+  transition: all .3s;
 }
 .petal {
   position: absolute;
@@ -15,10 +16,10 @@
 }
 .petal span{
   width: 50px;
-  height: 22px;
+  height: 20px;
   border-radius: 50%;
   background: #eee;
-  /* border: 1px solid #ddd; */
+  border: 1px solid #ddd;
   float: left;
 }
 .petal p {
@@ -29,9 +30,9 @@
   float: left;
 }
 
-.petal1 {transform: rotateZ(60deg);}
-.petal2 {transform: rotateZ(120deg);}
-.petal3 {transform: rotateZ(180deg);}
-.petal4 {transform: rotateZ(240deg);}
-.petal5 {transform: rotateZ(300deg);}
-.petal6 {transform: rotateZ(360deg);}
+#petal1 {transform: rotateZ(60deg);}
+#petal2 {transform: rotateZ(120deg);}
+#petal3 {transform: rotateZ(180deg);}
+#petal4 {transform: rotateZ(240deg);}
+#petal5 {transform: rotateZ(300deg);}
+#petal6 {transform: rotateZ(360deg);}
