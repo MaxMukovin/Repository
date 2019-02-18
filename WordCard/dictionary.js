@@ -1,6 +1,6 @@
 var dictionary = [
   lesson1 = {
-    name: "Урок 1 - 2",
+    name: "Урок 1-2",
     dictionary: [
       ["I","я"],
       ["you","ты/Вы/тебя/Вас/тебе/Вам"],
@@ -26,7 +26,7 @@ var dictionary = [
   },
 // ==========================================================================================
   mostPopularWords = {
-    name: "250 популярных фраз",
+    name: "250 популярных слов",
     dictionary: [
       ["the", "определенный артикль", "[ðə:]"],
       ["and", "и; с; а, но", "[ænd]"],
@@ -441,7 +441,6 @@ var dictionary = [
       ["Everything is ready", "Всё готово"],
       ["Except for", "За исключением, кроме"],
       ["Excuse me", "Извините"],
-      ["Excuse me", "Заснуть, уснуть"],
       ["Feel good", "Чувствовать себя хорошо"],
       ["Fill in the form, please!", "Заполните бланк (анкету), пожалуйста!"],
       ["Fill it up, please", "Налейте ещё пожалуйста"],
@@ -693,7 +692,7 @@ var dictionary = [
       ["What time is it?", "Сколько времени?"],
       ["What would you like to drink?", "Что бы ты хотел выпить?"],
       ["What would you like to eat?", "Что бы ты хотел поесть?"],
-      ["What’s going on?", "Что происходит?"],
+      ["What’s going on?", "В чем дело?"],
       ["What’s happening?", "Что происходит?"],
       ["What's the matter?", "В чем дело?"],
       ["What's up?", "В чём дело?"],

@@ -1,15 +1,25 @@
 // Добавляет кнопку НАЗАД слева
 window.addEventListener("DOMContentLoaded", function(){
-
-  var backButton = document.body.appendChild(document.createElement("a"))
-  backButton.appendChild(document.createTextNode(""))
-  backButton.className = "backBtn";
-  backButton.href = "../index.html";
+  var header = document.body.appendChild(document.createElement("div"));
+      header.id = 'header';
+  var backButton = header.appendChild(document.createElement("a"))
+      backButton.className = "backBtn";
+      backButton.href = "../index.html";
 
   var style = document.body.appendChild(document.createElement("style"))
   style.appendChild(document.createTextNode(`
+    #header {
+      position: absolute;
+      width: 100%;
+      height: 40px;
+      background: #f8f8f8;
+      border-bottom: 1px solid #eee;
+      transition: all .3s;
+      transform-origin: top;
+      top: 0;
+      left: 0;
+    }
     .backBtn {
-      // background: url("https://img.icons8.com/color/96/000000/left-squared.png");
       background: url("https://img.icons8.com/color/96/000000/back.png");
       background-size: cover;
       position: absolute;

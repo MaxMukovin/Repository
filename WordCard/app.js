@@ -35,7 +35,7 @@ for (var i = 0; i < dictionary.length; i++) {
         }
         transcription = Math.round(transcription / dictionary[i].dictionary.length * 100);
 
-        newDictionary.children[1].children[1].innerHTML = `Элементов:${dictionary[i].dictionary.length}; Транскрипция: ${transcription}%`
+        newDictionary.children[1].children[1].innerHTML = `Элементов: ${dictionary[i].dictionary.length}; Транскрипция: ${transcription}%`
 
         newDictionary.onclick = function(){
           if (newDictionary.className == "dictionaries") {
@@ -84,7 +84,8 @@ function init(){
     alert("Весь словарь пройден! Начать заново");
     counterTrue = 0;
     counterFalse = 0;
-    if (structureArray.reduce((accumulator, currentValue) => accumulator + currentValue) == 0) {
+    // if (structureArray.reduce((accumulator, currentValue) => accumulator + currentValue) == 0) {
+    if (Math.max.apply(null, structureArray) == 0) {
       structureArray[0] = 1;
     }
     addDictionarys()
@@ -218,4 +219,23 @@ function closeSetting() {
   settingState = 0;
   stat.style.opacity = "1"
   container.style.opacity = "1"
+}
+
+
+!function(){
+  var table = document.createElement("table");
+  table.style.paddingTop = "200px"
+  container.appendChild(table);
+
+  for (var i = 0; i < dictionary[3].dictionary.length; i++) {
+    var tr = document.createElement("tr");
+    var td1 = document.createElement("td");
+    td1.innerHTML = `${dictionary[3].dictionary[i][0]}`;
+    var td2 = document.createElement("td");
+    td2.innerHTML = `${dictionary[3].dictionary[i][1]}`;
+
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    table.appendChild(tr);
+  }
 }

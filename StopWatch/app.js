@@ -7,6 +7,10 @@ function enableNoSleep() {
 	setTimeout(function(){noSleep.disable();}, 100);
   timerNS = setTimeout(enableNoSleep, 15000);
 };
+// DOM to Image
+
+
+
 //=========
 // Запрет перезагрузки
 // window.onbeforeunload = function() {
@@ -29,6 +33,15 @@ var minute = 0,
     counterDelay = 0,
     addRoundInfo = newRoundInfo;
 
+
+
+var dd = new Date().getDate(),
+    mm = new Date().getMonth() + 1,
+    yyyy = new Date().getFullYear();
+if (mm < 10) {
+  mm = '0' + mm;
+}
+date.innerHTML = `${dd}.${mm}.${yyyy}`;
 roundsInfo.removeChild(roundsInfo.children[0]);
 
 function stopWatch(){
@@ -72,6 +85,7 @@ btnStart.onclick = function(){
   btnStart.className = "button disable";
   btnClear.className = "button disable";
   btnPause.className = "button w50 enable";
+  header.style.transform = "translateY(-100%)";
 };
 
 btnPause.onclick = function(){
@@ -84,6 +98,7 @@ btnPause.onclick = function(){
   btnStart.className = "button w25 enable";
   btnClear.className = "button w25 enable";
   btnPause.className = "button disable";
+  header.style.transform = "translateY(0)";
 };
 
 btnClear.onclick = function(){
