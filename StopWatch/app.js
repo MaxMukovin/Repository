@@ -28,7 +28,7 @@ var minute = 0,
     status = 0,
     round = 0,
     _distance = 0,
-    delay = 10,
+    delay = 1,
     roundTime = [],
     counterDelay = 0,
     addRoundInfo = newRoundInfo;
@@ -42,6 +42,7 @@ if (mm < 10) {
   mm = '0' + mm;
 }
 date.innerHTML = `${dd}.${mm}.${yyyy}`;
+
 roundsInfo.removeChild(roundsInfo.children[0]);
 
 function stopWatch(){
