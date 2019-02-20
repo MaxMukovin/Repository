@@ -240,10 +240,7 @@ user-select: none;
   margin: auto;
   width: 97%;
   position: relative;
-  /* height: 100vh; */
   transition: all .3s;
-  /* overflow: auto; */
-  /* overflow-x: hidden; */
 
 }
 .card {

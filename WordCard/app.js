@@ -2,7 +2,6 @@
 // window.onbeforeunload = function() {
 //   return "";
 // }
-
 /////////////////////////////////////////////////////////////////////////////////
 // Получение данных по Имени из куки
 function getСookie (cookieName)
@@ -18,12 +17,20 @@ var cookieDate= new Date();
 cookieDate.setTime(cookieDate.getTime() - 1);
 // document.cookie = "counterArray" + "=; expires=" + cookieDate.toGMTString();
 
+// Сохранение Куки
+function setCookie (name, value, expires, path, domain, secure) {
+      document.cookie = name + "=" + escape(value) +
+        ((expires) ? "; expires=" + expires : "") +
+        ((path) ? "; path=" + path : "") +
+        ((domain) ? "; domain=" + domain : "") +
+        ((secure) ? "; secure" : "");
+}
 /////////////////////////////////////////////////////////////////////////////////
-if (isNaN(getСookie("counterTrue")) || getСookie("counterTrue") == null) {document.cookie = "counterTrue = 0"};
-if (isNaN(getСookie("counterFalse")) || getСookie("counterFalse") == null) {document.cookie = "counterFalse = 0"};
-if (getСookie("structureArray") == null) {document.cookie = "structureArray = 0"};
-if (getСookie("counterArray") == null) {document.cookie = "counterArray = -1"};
-if (getСookie("modeState") == null) {document.cookie = "modeState = 0"};
+if (isNaN(getСookie("counterTrue")) || getСookie("counterTrue") == null) {setCookie("counterTrue", 0, "Fri, 01-Jan-2100 00:00:00 GMT", "/")};
+if (isNaN(getСookie("counterFalse")) || getСookie("counterFalse") == null) {setCookie("counterFalse", 0, "Fri, 01-Jan-2100 00:00:00 GMT", "/")};
+if (getСookie("structureArray") == null) {setCookie("structureArray", 0, "Fri, 01-Jan-2100 00:00:00 GMT", "/")};
+if (getСookie("counterArray") == null) {setCookie("counterArray", -1, "Fri, 01-Jan-2100 00:00:00 GMT", "/")};
+if (getСookie("modeState") == null) {setCookie("modeState", 0, "Fri, 01-Jan-2100 00:00:00 GMT", "/")};
 
 console.log(document.cookie);
 
@@ -91,7 +98,8 @@ if (Math.max.apply(null, structureArray) == 0) {
     structureArray.push(0)
   }
   structureArray[0] = 1;
-  document.cookie = `structureArray = ${structureArray}`;
+  // document.cookie = `structureArray = ${structureArray}`;
+  setCookie("structureArray", structureArray, "Fri, 01-Jan-2100 00:00:00 GMT", "/")
 }
 // Создаём словарь на основании массива структуры
 addDictionarys();
@@ -127,9 +135,9 @@ function init(){
     counterArray = [-1];
     counterTrue = 0;
     counterFalse = 0;
-    document.cookie = `counterTrue = ${counterTrue}`
-    document.cookie = `counterFalse = ${counterFalse}`
-    document.cookie = `counterArray = ${counterArray}`
+    setCookie("counterTrue", counterTrue, "Fri, 01-Jan-2100 00:00:00 GMT", "/");
+    setCookie("counterFalse", counterFalse, "Fri, 01-Jan-2100 00:00:00 GMT", "/");
+    setCookie("counterArray", counterArray, "Fri, 01-Jan-2100 00:00:00 GMT", "/");
     // if (structureArray.reduce((accumulator, currentValue) => accumulator + currentValue) == 0) {
     if (Math.max.apply(null, structureArray) == 0) {
       structureArray[0] = 1;
@@ -154,7 +162,6 @@ function init(){
 
   btnShow.style.height = `${buttonHeight}px`;
 
-  // translation.children[1].style.opacity = "0";
   btnShow.style.marginTop = "0";
   btnShow.style.opacity = "1";
   btnTrue.style.height = "0";
@@ -200,14 +207,15 @@ function btnTrueEvent(){
   appDictionary.splice(element,1);
   counterArray.push(element)
   counterTrue++;
-  document.cookie = `counterTrue = ${counterTrue}`
-  document.cookie = `counterArray = ${counterArray}`
+  setCookie("counterTrue", counterTrue, "Fri, 01-Jan-2100 00:00:00 GMT", "/");
+  setCookie("counterArray", counterArray, "Fri, 01-Jan-2100 00:00:00 GMT", "/");
   remove();
 }
 
 function btnFalseEvent(){
   counterFalse++
-  document.cookie = `counterFalse = ${counterFalse}`
+  setCookie("counterFalse", counterFalse, "Fri, 01-Jan-2100 00:00:00 GMT", "/");
+
   remove();
 }
 
@@ -257,11 +265,13 @@ btnConfirm.onclick = function(){
   counterTrue = 0;
   counterFalse = 0;
   counterArray = [-1];
-  document.cookie = `counterTrue = ${counterTrue}`
-  document.cookie = `counterFalse = ${counterFalse}`
-  document.cookie = `structureArray = ${structureArray}`
-  document.cookie = `counterArray = ${counterArray}`
-  document.cookie = `modeState = ${modeState}`
+
+  setCookie("counterTrue", counterTrue, "Fri, 01-Jan-2100 00:00:00 GMT", "/");
+  setCookie("counterFalse", counterFalse, "Fri, 01-Jan-2100 00:00:00 GMT", "/");
+  setCookie("structureArray", structureArray, "Fri, 01-Jan-2100 00:00:00 GMT", "/");
+  setCookie("counterArray", counterArray, "Fri, 01-Jan-2100 00:00:00 GMT", "/");
+  setCookie("modeState", modeState, "Fri, 01-Jan-2100 00:00:00 GMT", "/");
+
   addDictionarys();
   remove();
 }

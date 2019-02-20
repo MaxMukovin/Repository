@@ -2,12 +2,139 @@ body {
   margin: 0;
   padding: 0;
   margin-top: 50px;
+  font-family: verdana, sans-serif;
+
 }
+.w50 {
+  width: 50%;
+  float: left;
+}
+#header {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  top: 0;
+  background: #1867c0;
+}
+#qrcode {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.mainLogo {
+  width: 38px;
+  height: 38px;
+  float: left;
+  background-image: url(favicon.png);
+  background-position: center;
+  background-size: 70%;
+  background-repeat: no-repeat;
+}
+#header span {
+  color: #eee;
+  line-height: 40px;
+}
+/* ///////////////////////////////////////////// */
+.card {
+  margin: 7px;
+  padding: 3px;
+  height: 40px;
+  overflow: hidden;
+  border: 1px solid #e8e8e8;
+  border-radius: 3px;
+  /* box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12); */
+
+}
+.card .github {
+  background-image: url(https://img.icons8.com/ios-glyphs/90/000000/github.png);
+  background-image: url(https://img.icons8.com/color/96/000000/git.png);
+}
+.card .hosting {
+  background-image: url(https://img.icons8.com/color/96/000000/download-from-cloud.png);
+}
+.card > .logo {
+  float: left;
+  height: 40px;
+  width: 15%;
+  background-position: left;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+/* ///////////////////////////////////////////// */
+.info {
+  margin: 0;
+  padding-left: 2%;
+  float: left;
+  width: 68%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.info span {
+  display: block;
+  width: 100%;
+  color: #222;
+  font-size: .9em;
+}
+.info > a {
+  width: 100px;
+  color: #666;
+  font-size: .7em;
+  text-decoration: none;
+  margin-left: 0;
+  transition: all .3s;
+}
+.info > a:hover {
+  margin-left: 5px;
+  color: #777;
+  text-decoration: underline;
+}
+/* ///////////////////////////////////////////// */
+
+.control {
+  width: 15%;
+  float: right;
+}
+.control .download,.copy {
+  transition: all .3s;
+  background-image: url(https://img.icons8.com/ios-glyphs/90/000000/downloads.png);
+  background-position: center;
+  background-size: 90%;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  float: right;
+  margin-right: 0px;
+  opacity: .4;
+}
+.control > .copy {
+  background-image: url(https://img.icons8.com/ios-glyphs/90/000000/copy.png);
+  border: none;
+  cursor: pointer;
+  background-color: inherit;
+  outline: 0 !important;
+
+}
+.control > .download:hover, .copy:hover {opacity: 1; transform: scale(1.1) rotate(0deg);}
+.control > .download:active, .copy:active {
+  transform: scale(1.1) rotate(360deg);
+  border: none;
+}
+/* ///////////////////////////////////////////// */
+
+
+
+
+
+
+
 .main {
   margin: auto;
-  width: 50%;
-  min-width: 400px;
-  font-family: verdana, sans-serif;
+  width: 100%;
+  max-width: 500px;
+}
+.projects > span {
+  color: #666;
+  padding: 7px;
+  font-size: .7em;
 }
 ul {
   margin: 0;
@@ -24,7 +151,7 @@ li {
   transition: all .3s;
 }
 li:hover {padding-left: 5px;}
-.logo {
+li .logo {
   width: 30px;
   height: 30px;
   float: left;
@@ -40,7 +167,7 @@ li:hover {padding-left: 5px;}
 a span::before {
   content: '|';
   color: #eee;
-  margin-right: 5px;
+  margin-right: 7px;
 
 }
 #WordCard{background-image: url(WordCard/favicon.png);}

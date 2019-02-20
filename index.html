@@ -3,6 +3,7 @@
   <head>
     <link rel="stylesheet" href="master.css"/>
     <meta charset="utf-8">
+    <meta name="theme-color" content="#1867c0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
     <title>SandBox</title>
@@ -10,46 +11,102 @@
     <script src="_DATA/QRcode generator/app.js"></script>
   </head>
   <body>
-    <div id="header"></div>
-    <div class="main">
-      <ul>
-        <li>
-          <a href="WordCard/index.html">
-            <div id="WordCard" class="logo"></div>
-            <span>WordCard</span>
-          </a>
-        </li>
-        <li>
-          <a href="StopWatch/index.html">
-            <div id="StopWatch" class="logo"></div>
-            <span>StopWatch</span>
-          </a>
-        </li>
-        <li>
-          <a href="MineSweeper/index.html">
-            <div id="MineSweeper" class="logo"></div>
-            <span>MineSweeper</span>
-          </a>
-        </li>
-        <li>
-          <a href="Period/index.html">Period</a>
-        </li>
-        <li>
-          <a href="AddRemoveElements/index.html">AddRemoveElements</a>
-        </li>
-        <li>
-          <a href="noSleep/index.html">noSleep</a>
-        </li>
-        <li>
-          <a href="ClickRound/index.html">ClickRound</a>
-        </li>
-        <li>
-          <a href="Template/index.html">Template</a>
-        </li>
-        <li>
-          <a href="TemplateNew/index.html">Template</a>
-        </li>
-      </ul>
+    <div id="header">
+      <div class="mainLogo"></div>
+      <span>SandBox</span>
     </div>
+
+    <div class="main">
+      <div class="w50">
+        <div class="card">
+          <div class="logo github"></div>
+          <div class="info">
+            <span>Git</span>
+            <a href="https://github.com/MaxMukovin" target="_blank">GitHub.com/MaxMukovin</a>
+          </div>
+          <div class="control">
+            <a class="download" href="https://github.com/MaxMukovin/SandBox/archive/master.zip" target="_blank"></a>
+            <button type="button" id="copyAdress" name="button" class="copy"></button>
+          </div>
+        </div>
+      </div>
+      <div class="w50">
+        <div class="card">
+          <div class="logo hosting"></div>
+          <div class="info">
+            <span>Hosting</span>
+            <a href="https://cp.hostiman.ru/clientarea.php" target="_blank">Hostiman.ru</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="projects">
+        <span>Projects:</span>
+        <ul>
+          <li>
+            <a href="WordCard/index.html">
+              <div id="WordCard" class="logo"></div>
+              <span>WordCard</span>
+            </a>
+          </li>
+          <li>
+            <a href="StopWatch/index.html">
+              <div id="StopWatch" class="logo"></div>
+              <span>StopWatch</span>
+            </a>
+          </li>
+          <li>
+            <a href="MineSweeper/index.html">
+              <div id="MineSweeper" class="logo"></div>
+              <span>MineSweeper</span>
+            </a>
+          </li>
+          <li>
+            <a href="Period/index.html">Period</a>
+          </li>
+          <li>
+            <a href="AddRemoveElements/index.html">AddRemoveElements</a>
+          </li>
+          <li>
+            <a href="noSleep/index.html">noSleep</a>
+          </li>
+          <li>
+            <a href="ClickRound/index.html">ClickRound</a>
+          </li>
+          <li>
+            <a href="Template/index.html">Template</a>
+          </li>
+          <li>
+            <a href="TemplateNew/index.html">TemplateNew</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+    // var input;
+      copyAdress.onclick = async function(){
+        const input = document.createElement('input');
+        input.style.position = "absolute";
+        input.style.top = "0";
+        document.body.appendChild(input);
+        input.value = 'https://github.com/MaxMukovin/SandBox/archive/master.zip';
+        input.focus();
+        input.select();
+        const result = document.execCommand('copy');
+        if (result === 'unsuccessful') {
+          console.error('Failed to copy text.');
+        }
+        document.body.removeChild(input);
+      }
+    </script>
+    <script type="text/javascript">
+
+    </script>
+
+
+
+
+
    </body>
 </html>
