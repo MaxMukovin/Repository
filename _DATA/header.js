@@ -12,7 +12,7 @@ window.addEventListener("DOMContentLoaded", function(){
       position: absolute;
       width: 100%;
       height: 40px;
-      background: #f8f8f8;
+      background: #fdfdfd;
       border-bottom: 1px solid #eee;
       transition: all .3s;
       transform-origin: top;
