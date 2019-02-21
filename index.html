@@ -25,7 +25,7 @@
             <a href="https://github.com/MaxMukovin" target="_blank">GitHub.com/MaxMukovin</a>
           </div>
           <div class="control">
-            <a class="download" href="https://github.com/MaxMukovin/SandBox/archive/master.zip" target="_blank"></a>
+            <a class="download" href="https://github.com/MaxMukovin/SandBox/archive/master.zip" target="_self"></a>
             <button type="button" id="copyAdress" name="button" class="copy"></button>
           </div>
         </div>
@@ -83,8 +83,12 @@
       </div>
     </div>
 
+    <div class="alert inactive" id="copyAlert">
+      Ссылка скопирована в буфер обмена!
+    </div>
+
+
     <script type="text/javascript">
-    // var input;
       copyAdress.onclick = async function(){
         const input = document.createElement('input');
         input.style.position = "absolute";
@@ -94,19 +98,26 @@
         input.focus();
         input.select();
         const result = document.execCommand('copy');
+        showAlert(copyAlert)
         if (result === 'unsuccessful') {
           console.error('Failed to copy text.');
         }
         document.body.removeChild(input);
       }
+      function showAlert(alert) {
+        var alert = alert;
+        alert.className = "alert active";
+        setTimeout(function(){
+          alert.className = "alert inactive";
+        },3000)
+      }
+
+
+
+
     </script>
     <script type="text/javascript">
 
     </script>
-
-
-
-
-
    </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
   <head>
     <link rel="stylesheet" href="master.css"/>
     <meta charset="utf-8">
@@ -13,6 +13,21 @@
     <!-- <script src="../_DATA/noSleep.js"></script> -->
   </head>
   <body>
+    <div class="main">
+      <div class="control">
+        <button type="button" id="btnConfirm">Создать словарь</button>
+      </div>
+      <div class="column">
+        <div class="content padTextArea">
+          <textarea id="text" name="name" placeholder="Введите текст для формирования словаря" maxlength="1000"></textarea>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <table id="table" rules="all" frame="border"></table>
+        </div>
+      </div>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>
