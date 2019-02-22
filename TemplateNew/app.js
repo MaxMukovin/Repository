@@ -27,17 +27,16 @@ function setCookie (name, value, expires, path, domain, secure) {
 
 if (getСookie("innerText") == null) {setCookie("innerText", "", "Fri, 01-Jan-2100 00:00:00 GMT", "/")};
 
-console.log(document.cookie);
 innerText = getСookie("innerText");
 text.value = innerText;
 
 btnConfirm.onclick = function() {
-  setCookie("innerText", text.value, "Fri, 01-Jan-2100 00:00:00 GMT", "/")
+  setCookie("innerText", text.value, "Fri, 01-Jan-2100 00:00:00 GMT", "/");
+
   while (table.children.length > 0) {
     table.removeChild(table.children[0])
   }
-  var data = text.value.toLowerCase().replace(/\(|\)|\.|\,/g, '');
-
+  var data = text.value.toLowerCase().replace(/\(|\)|\.|\,|\–|\-|1|2|3|4|5|6|7|8|9|0|\?|\!|“|”|\r?\n|||||/g, '');
 
   data = data.split(" ").map(String).sort();
 
@@ -59,28 +58,29 @@ btnConfirm.onclick = function() {
       currentColor = color1,
       counterColor = 0,
       check = "a";
-  console.log(data);
-  // var table = container.appendChild(document.createElement("table"));
+
   for (var i = 0; i < data.length; i++) {
-    var tr = table.appendChild(document.createElement("tr"));
-    var td1 = tr.appendChild(document.createElement("td"));
-    var td2 = tr.appendChild(document.createElement("td"));
-    td1.innerHTML = data[i];
-    td1.className = "notranslate";
-    td2.innerHTML = data[i];
+    if (data[i].length > 0) {
+
+      var tr = table.appendChild(document.createElement("tr"));
+      var td1 = tr.appendChild(document.createElement("td"));
+      var td2 = tr.appendChild(document.createElement("td"));
+      td1.innerHTML = data[i];
+      td1.className = "notranslate";
+      td2.innerHTML = data[i];;
 
 
-    if (data[i][0] != check) {
-      counterColor++;
-      if (counterColor %2 == 0) {
-        currentColor = color1;
-      } else {
-        currentColor = color2;
+      if (data[i][0] != check) {
+        counterColor++;
+        if (counterColor %2 == 0) {
+          currentColor = color1;
+        } else {
+          currentColor = color2;
+        }
+        check = data[i][0];
       }
-      check = data[i][0];
+      tr.style.background = currentColor;
     }
-
-    tr.style.background = currentColor;
   }
   // document.body.children[0].removeChild(text)
 
