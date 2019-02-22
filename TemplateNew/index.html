@@ -13,13 +13,14 @@
     <!-- <script src="../_DATA/noSleep.js"></script> -->
   </head>
   <body>
-    <div class="main">
+    <div id="main" class="main">
       <div class="control">
         <button type="button" id="btnConfirm">Создать словарь</button>
+        <div id="btnPast"></div>
       </div>
       <div class="column">
         <div class="content padTextArea">
-          <textarea id="text" name="name" placeholder="Введите текст для формирования словаря" maxlength="1000"></textarea>
+          <textarea id="text" name="name" placeholder="Введите текст для формирования словаря" maxlength="1000000"></textarea>
         </div>
       </div>
       <div class="column">
@@ -28,6 +29,12 @@
         </div>
       </div>
     </div>
+    <script>
+      main.style.height = `${innerHeight - 80}px`
+      window.onresize = function() {
+        main.style.height = `${innerHeight - 80}px`
+      }
+    </script>
     <script src="app.js"></script>
   </body>
 </html>

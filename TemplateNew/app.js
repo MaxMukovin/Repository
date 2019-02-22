@@ -1,6 +1,38 @@
-text.value = "This “Constitution” defines rules and processes for the governance and operations of an organization. The “Ratifiers” are adopting these rules as the formal authority structure for the “Organization” specified upon the Constitution’s adoption, which may be an entire entity or a part of one that the Ratifiers have authority to govern and run. The Ratifiers and anyone else who agrees to take part in the governance and operations of the Organization (its “Partners”) may rely upon the authorities granted by this Constitution, and also agree to be bound by its duties and constraints";
+// text.value = "This “Constitution” defines rules and processes for the governance and operations of an organization. The “Ratifiers” are adopting these rules as the formal authority structure for the “Organization” specified upon the Constitution’s adoption, which may be an entire entity or a part of one that the Ratifiers have authority to govern and run. The Ratifiers and anyone else who agrees to take part in the governance and operations of the Organization (its “Partners”) may rely upon the authorities granted by this Constitution, and also agree to be bound by its duties and constraints";
+
+/////////////////////////////////////////////////////////////////////////////////
+// Получение данных по Имени из куки
+function getСookie (cookieName)
+{
+  var results = document.cookie.match ( '(^|;) ?' + cookieName + '=([^;]*)(;|$)' );
+  if ( results )
+  return ( unescape ( results[2] ) );
+  else
+  return null;
+}
+// Удалить куки
+var cookieDate= new Date();
+cookieDate.setTime(cookieDate.getTime() - 1);
+// document.cookie = "counterArray" + "=; expires=" + cookieDate.toGMTString();
+
+// Сохранение Куки
+function setCookie (name, value, expires, path, domain, secure) {
+      document.cookie = name + "=" + escape(value) +
+        ((expires) ? "; expires=" + expires : "") +
+        ((path) ? "; path=" + path : "") +
+        ((domain) ? "; domain=" + domain : "") +
+        ((secure) ? "; secure" : "");
+}
+/////////////////////////////////////////////////////////////////////////////////
+
+if (getСookie("innerText") == null) {setCookie("innerText", "", "Fri, 01-Jan-2100 00:00:00 GMT", "/")};
+
+console.log(document.cookie);
+innerText = getСookie("innerText");
+text.value = innerText;
 
 btnConfirm.onclick = function() {
+  setCookie("innerText", text.value, "Fri, 01-Jan-2100 00:00:00 GMT", "/")
   while (table.children.length > 0) {
     table.removeChild(table.children[0])
   }
