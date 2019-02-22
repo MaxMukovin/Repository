@@ -191,11 +191,11 @@ a > span::before {
   opacity: .8;
   color: #fff;
   font-size: .7em;
-  line-height: 30px;
+  line-height: 40px;
   text-align: center;
   transition: all .3s;
   transform-origin: bottom;
-  height: 30px;
+  height: 40px;
 }
 .active {
   transform: scaleY(1);

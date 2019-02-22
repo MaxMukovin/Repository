@@ -82,38 +82,38 @@
         </ul>
       </div>
     </div>
-
     <div class="alert inactive" id="copyAlert">
       Ссылка скопирована в буфер обмена!
     </div>
 
-
     <script type="text/javascript">
-      copyAdress.onclick = async function(){
-        const input = document.createElement('input');
-        input.style.position = "absolute";
-        input.style.top = "0";
-        document.body.appendChild(input);
-        input.value = 'https://github.com/MaxMukovin/SandBox/archive/master.zip';
-        input.focus();
-        input.select();
-        const result = document.execCommand('copy');
+
+      copyAdress.onclick = function(){
+        var copyBlock = document.body.appendChild(document.createElement("div"));
+            copyBlock.innerHTML = "https://github.com/MaxMukovin/SandBox/archive/master.zip";
+            copyBlock.className = "copyText";
+            copyBlock.style.position = "absolute";
+            copyBlock.style.top = "0";
+            copyBlock.style.width = "0";
+        var link = document.querySelector('.copyText');
+        var range = document.createRange();
+            range.selectNode(link);
+        window.getSelection().addRange(range);
+
+        var successful = document.execCommand('copy');
         showAlert(copyAlert)
-        if (result === 'unsuccessful') {
-          console.error('Failed to copy text.');
-        }
-        document.body.removeChild(input);
+
+        window.getSelection().removeAllRanges();
+        document.body.removeChild(document.querySelector('.copyText'));
       }
+
       function showAlert(alert) {
         var alert = alert;
         alert.className = "alert active";
         setTimeout(function(){
           alert.className = "alert inactive";
-        },3000)
+        }, 3000)
       }
-
-
-
 
     </script>
     <script type="text/javascript">
