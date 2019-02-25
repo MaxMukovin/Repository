@@ -214,6 +214,10 @@ a > span::before {
 #WordCard{background-image: url(WordCard/favicon.png);}
 #StopWatch{background-image: url(StopWatch/favicon.png);}
 #MineSweeper{background-image: url(MineSweeper/favicon.png);}
+#DictionaryGenerator{background-image: url(DictionaryGenerator/favicon.png);}
+#Period{background-image: url(Period/favicon.png);}
+#ClickRound{background-image: url(ClickRound/favicon.png);}
+#noSleep{background-image: url(noSleep/favicon.png);}
 
 @media screen and (orientation: portrait){
   .main {

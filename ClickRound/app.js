@@ -5,7 +5,7 @@ var counter = 0;
 
 setInterval(function(){
   counter++;
-}, 300)
+}, 100)
 
 function addRound(left, top) {
 

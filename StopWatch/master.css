@@ -14,10 +14,10 @@ body {
   color: #444;
 }
 #container {
-  margin: 7px;
+  /* margin: 7px; */
   overflow: hidden;
   background-color: #fff;
-  /* padding: 7px; */
+  padding: 7px;
 }
 #date {
   width: 100%;
